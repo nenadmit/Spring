@@ -1,0 +1,69 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org">
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Please Login</title>
+
+    <div th:replace="fragments/header ::header"></div>
+</head>
+<style>
+   .login-form {
+		width: 340px;
+    	margin: 50px auto;
+	}
+    .login-form form {
+    	margin-bottom: 15px;
+        background: #f7f7f7;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+    }
+    .login-form h2 {
+        margin: 0 0 15px;
+    }
+    .form-control, .btn {
+        min-height: 38px;
+        border-radius: 2px;
+    }
+    .btn {
+        font-size: 15px;
+        font-weight: bold;
+    }
+    .btn-primary{background-color:#000;color: #FFF;}
+    .btn-primary:hover{color: #FFF;}
+
+</style>
+
+<body class="text-center">
+<div class="login-form" th:fragment="content" >
+    <form name="f" th:action="@{/login}" method="post" class="login-signin">
+        <h2 class="text-center">Log in</h2>
+
+            <div class="form-group">
+                <input type="text" id="username" name="username" class="form-control" placeholder="Username"/><br/>
+            </div>
+            <div class="form-group">
+
+                <input type="password" id="password" name="password" class="form-control" placeholder="Password"/><br/>
+            </div>
+
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+
+            <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-block">Log in</button>
+    </div>
+    </form>
+    <p class="text-center"><a href="/register">Create an Account</a></p>
+    <p th:text="${error}"></p>
+    <p  th:if="${param.error}" class="alert alert-error">
+        Invalid username and password.
+    </p>
+</div>
+<p th:text="${sucessfulReg}"/>
+<p th:text="${nameChangeSucessful}"></p>
+
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

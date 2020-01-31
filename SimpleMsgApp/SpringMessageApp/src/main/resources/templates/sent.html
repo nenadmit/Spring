@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sent Messages</title>
+    <div th:replace="fragments/header ::header"></div>
+</head>
+<style>
+   .login-form {
+		width: 500px;
+    	margin: 66px auto;
+	}
+    .login-form form {
+    	margin-bottom: 15px;
+        background: #f7f7f7;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+    }
+    .login-form h2 {
+        margin: 0 0 15px;
+    }
+    .form-control, .btn {
+        min-height: 38px;
+        border-radius: 2px;
+    }
+    .btn-primary{background-color:#000;color: #FFF;}
+    .btn-primary:hover{color: #FFF;}
+
+    .btn {
+        font-size: 15px;
+        font-weight: bold;
+        min-height: 38px;
+        border-radius: 2px;
+    }
+    textarea {
+    resize: none;
+    }
+     .myDiv
+    {
+
+     color:#000000;
+     width: 700px;
+     margin: 66px auto;
+     margin-bottom: 15px;
+        background: #f7f7f7;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+        display: flex;
+         justify-content: center;
+
+   }
+   tbl-nem
+   {
+   align-self: center;
+
+   }
+
+</style>
+<header th:replace="fragments/navigation ::navigation"></header>
+
+<body>
+
+<h2 class="text-center">Sent Messages</h2>
+<div class="myDiv">
+
+<table class="table table-striped tbl-nem" width="650">
+
+    <thead>
+    <tr>
+        <th scope="col"> Title : </th>
+        <th scope="col"> Sent to: </th>
+        <th scope="col"> Message:</th><br/>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:each="msg : ${arr2}">
+        <td><span th:text="${msg.title}"> Title : </span></td>
+        <td><span th:text="${msg.receiver}"> Receiver :</span></td>
+        <td><span th:text="${msg.msgBody}"> Message: </span></td><br/>
+        <td><a th:href="@{'/delete?id=' + ${msg.id}}"><button class="btn btn-danger">Delete message</button></a></td>
+    </tr>
+    </tbody>
+</table>
+</div>
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>
