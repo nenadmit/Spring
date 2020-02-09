@@ -7,7 +7,7 @@
 * [Maven](http://springboot.io) - Dependency Management
 * [Hibernate](https://hibernate.org/) - Persistence provider
 * [Thymeleaf](https://www.thymeleaf.org/) - Views
-*[mySql](https://www.mysql.com/)-Database
+* [mySql](https://www.mysql.com/) - Database
 
 ## What its all about
 
