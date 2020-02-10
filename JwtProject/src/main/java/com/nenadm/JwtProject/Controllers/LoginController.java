@@ -1,28 +1,15 @@
 package com.nenadm.JwtProject.Controllers;
 
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import com.fasterxml.jackson.databind.util.JSONWrappedObject;
 import com.nenadm.JwtProject.Model.JwtToken;
 import com.nenadm.JwtProject.Model.User;
-import io.jsonwebtoken.Jwt;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import org.json.JSONObject;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
 import java.util.Date;
 
 @RestController
@@ -72,7 +59,7 @@ public class LoginController {
         }
 
 
-        //if credentials are ok, 
+        //if credentials are ok, JWT is put into a Cookie
         Cookie cookie = new Cookie("authorization",result.toString());
         response.addCookie(cookie);
 
