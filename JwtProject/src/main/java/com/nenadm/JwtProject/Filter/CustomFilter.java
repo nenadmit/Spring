@@ -40,10 +40,10 @@ public class CustomFilter extends GenericFilterBean {
         
 
         try{
-            claims = Jwts.parser().setSigningKey("aSf4#f3d#@").parseClaimsJws(jwtToken).getBody();
+             claims = Jwts.parser().setSigningKey("aSf4#f3d#@").parseClaimsJws(jwtToken).getBody();
 
         }catch (SignatureException e){
-            throw new ServletException("Not authorized 401");
+              throw new ServletException("Not authorized 401");
         }
 
 
