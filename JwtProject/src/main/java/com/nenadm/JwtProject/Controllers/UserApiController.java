@@ -9,7 +9,7 @@ public class UserApiController {
 
     @GetMapping
     @ResponseBody
-    public String aaa(){
+    public String userApi(){
 
         return "Welcome";
     }
