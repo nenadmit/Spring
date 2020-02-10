@@ -27,7 +27,6 @@ public class CustomFilter extends GenericFilterBean {
         }
 
         String jwtToken = "";
-
         Claims claims;
 
         for (Cookie c:cookies) {
@@ -36,12 +35,9 @@ public class CustomFilter extends GenericFilterBean {
 
         }
 
-        System.out.println(jwtToken);
-
-        if(jwtToken.equals("")){
-            System.out.println(jwtToken);
+        if(jwtToken.equals(""))
             throw new ServletException("Not authorized 401");
-        }
+        
 
         try{
             claims = Jwts.parser().setSigningKey("aSf4#f3d#@").parseClaimsJws(jwtToken).getBody();
