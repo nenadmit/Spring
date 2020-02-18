@@ -16,15 +16,16 @@ import java.io.IOException;
 public class CustomFilter extends GenericFilterBean {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+        
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         HttpSession session = request.getSession();
-//
-//        if(session.getAttribute("username") == null){
-//            response.sendRedirect("/unauthorized");
-//            return;
-//        }
+
+         if(session.getAttribute("username") == null){
+             response.sendRedirect("/unauthorized");
+             return;
+         }
 
         filterChain.doFilter(servletRequest,servletResponse);
 
