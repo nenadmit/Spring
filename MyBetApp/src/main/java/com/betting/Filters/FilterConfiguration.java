@@ -13,7 +13,7 @@ public class FilterConfiguration {
     public FilterRegistrationBean<CustomFilter>filterFilterRegistrationBean(){
         FilterRegistrationBean<CustomFilter> filterFilterRegistrationBean = new FilterRegistrationBean<>();
         filterFilterRegistrationBean.setFilter(customFilter);
-        filterFilterRegistrationBean.addUrlPatterns("/api/**");
+        filterFilterRegistrationBean.addUrlPatterns("/bet/**");
 
         return filterFilterRegistrationBean;
     }
