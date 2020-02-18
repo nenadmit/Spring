@@ -15,7 +15,7 @@ import java.io.IOException;
 
 
 @RestController
-@RequestMapping("/games")
+@RequestMapping("/bet")
 public class TicketController {
 
     @Autowired
@@ -40,7 +40,7 @@ public class TicketController {
     private int counter = 55;
 
 
-    @RequestMapping(value="/today",method = RequestMethod.GET)
+    @RequestMapping(value="/getGames",method = RequestMethod.GET)
     private Matches[] getGames(@RequestParam String startDate, @RequestParam String endDate
     ,HttpSession session) throws IOException {
 
