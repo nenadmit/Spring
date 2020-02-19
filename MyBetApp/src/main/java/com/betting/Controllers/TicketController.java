@@ -46,9 +46,6 @@ public class TicketController {
 
         matches = getJson.getGames(startDate,endDate);
 
-        if(session.getAttribute("username")==null)
-            session.setAttribute("username","nenadmit1");
-
         if(loggedInPlayer == null)
             loggedInPlayer = service.getPlayerByUsername((String) session.getAttribute("username"));
 
