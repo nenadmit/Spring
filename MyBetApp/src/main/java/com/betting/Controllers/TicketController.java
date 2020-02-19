@@ -46,6 +46,9 @@ public class TicketController {
 
         matches = getJson.getGames(startDate,endDate);
 
+        if(session.getAttribute("username")==null)
+            session.setAttribute("username","nenadmit1");
+
         if(loggedInPlayer == null)
             loggedInPlayer = service.getPlayerByUsername((String) session.getAttribute("username"));
 
@@ -88,9 +91,6 @@ public class TicketController {
             return "Game not found!";
 
         game = new SoccerGame();
-        game.setGameId(counter);
-        counter++;
-        System.out.println(game.getGameId());
         game.setHomeTeam(match.getHomeTeam().getName());
         game.setAwayTime(match.getAwayTeam().getName());
         game.setFix_player(fix);
@@ -111,8 +111,8 @@ public class TicketController {
     public String playTicket(@RequestParam int ticketAmount){
 
         ticket.setPotentialWin(ticketAmount * ticket.getQuota());
-        ticket.setTicketId(tService.getLastId()+1);
-        tService.save(ticket);
+
+
         loggedInPlayer.addTicket().add(ticket);
 
         service.update(loggedInPlayer);
