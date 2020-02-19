@@ -9,6 +9,7 @@ import javax.persistence.*;
 public class SoccerGame {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="game_id")
     private int gameId;
 
