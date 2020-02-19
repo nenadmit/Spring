@@ -16,59 +16,55 @@ public class UserService {
     public UserService(){
         con = new Configuration().configure().addAnnotatedClass(Player.class);
         sessionFactory = con.buildSessionFactory();
-        session = sessionFactory.openSession();
+
+
     }
 
     public void save(Player player){
-
+        session = getSession();
         session.getTransaction().begin();
         session.save(player);
-        session.flush();
         session.beginTransaction().commit();
-        session.clear();
+
+
     }
 
     public void merge(Player player){
-
+        session = getSession();
         session.getTransaction().begin();
         session.merge(player);
-        session.flush();
+
         session.beginTransaction().commit();
-        session.clear();
+
     }
 
     public void update(Player player){
-
+        session = getSession();
         session.getTransaction().begin();
         session.update(player);
         session.getTransaction().commit();
-        session.clear();
+
 
     }
 
     public Player getPlayerByUsername(String username){
+        session = getSession();
+        session.getTransaction().begin();
         Player player;
 
         player = (Player) session.createQuery(
                 "SELECT p FROM player p where p.username=:username")
                 .setParameter("username",username).getSingleResult();
-        session.clear();
+        session.getTransaction().commit();
+
         return player;
 
     }
 
 
-    public void manage(){
-        if(session == null){
-            session = sessionFactory.openSession();
-            System.out.println("Session is null, opening session!");
-
-        }else{
-            session.close();
-        }
-
+    public Session getSession() {
+        return sessionFactory.getCurrentSession();
     }
-
 
 
 }
