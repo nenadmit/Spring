@@ -23,10 +23,7 @@ public class TicketController {
 
     @Autowired
     private GetJson getJson;
-
-    @Autowired
-    private TicketService tService;
-
+    
     private Player loggedInPlayer;
 
     private Matches[] matches;
@@ -36,10 +33,7 @@ public class TicketController {
     private String endDate;
 
     private SoccerGame game;
-
-    private int counter = 55;
-
-
+  
     @RequestMapping(value="/getGames",method = RequestMethod.GET)
     private Matches[] getGames(@RequestParam String startDate, @RequestParam String endDate
     ,HttpSession session) throws IOException {
